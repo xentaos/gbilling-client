@@ -1,0 +1,30 @@
+v0.1-beta2:
+    - Timeout utk update kolum client di treev_client (server) dan di 
+      window_timer (client) ditiadakan, ini sangat tidak efisien, update data 
+      client dari fungsi thread dengan g_idle_add() utk update dari thread utama. 
+
+    - Recode polling check_client_command(), ini tidak baik krn perlu 
+      sinkronisasi, dgn proses/thread lainnya, update widget (etc). sekarang, 
+      perintah client diproses di fungsi co-thread handle_client(). proses di 
+      main thread!
+  
+    - Thread clean_servcmd() di tiadakan, ini yang mengakibatkan buffer
+      client tidak pernah terkirim, cara ini kemungkinan besar tidak 
+      digunakan lagi, sampai ada cara atau aturan yang lebih baik utk 
+      mengosongkan buffer client.
+ 
+    - Bug accept_client(), bug pada pointer data AcceptData yang di-pass
+      ke co-thread handle_client(), ini yang mengakibatkan error pada 
+      operasi socket (request client) krn kesalahan alokasi data.
+
+    - Cara baru utk menentukan client yang tidak aktif (gbilling client tidak
+      berjalan pada komputer client), ini sangat lebih baik daripada di versi
+      beta1 ;p
+
+    - Fitur ping dengan menggunakan utility internal sistem, ini masih uji coba
+      dan kemungkinan besar digantikan dengan membuat raw socket (ICMP) sendiri.
+    
+    - Perbaikan interfaces
+
+--------------------------------------------------------------------------------
+v0.1-beta1: - first release

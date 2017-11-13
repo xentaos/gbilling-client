@@ -1,0 +1,19 @@
+Project roadmap untuk versi 0.2:
+- Release beberapa snaphost sebelum release candidate
+- Release candidate rc1 0.2.1
+- Relaese versi stable 0.2.1
+
+Project roadmap untuk versi 0.1:
+
+- Beta1 (released, 17 Agustus 2008)
+- Beta2 (released, 22 September 2008)
+- Beta3 (proggress)
+- Stable release 0.1 (planning)
+
+
+Berikut adalah fitur-fitur akan dikembangkan di versi selanjutnya 0.3:
+
+- Sistem member (group, username dan password member)
+- Sistem voucher (generator, database, dan masa voucher)
+- Timing paket (paket aktif/nonaktif pada waktu yang ditentukan)
+- Sistem notifikasi suara (audio)

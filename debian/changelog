@@ -1,0 +1,12 @@
+gbilling-client (0.3.3) arok; urgency=medium
+
+  * Memperbaharui berkas debian/*
+    Membuat Artwork Xenta OS
+
+ -- Dindin Hernawan (Xenta OS) <root@dev.xentaos.org>  Mon, 13 Nov 2017 00:40:37 +0700 
+
+gbilling-client (0.3.2-build1~tahutek~lucid) lucid; urgency=low
+
+  * Initial release
+
+ -- Damar Riyadi <tldm217@gmail.com>  Fri, 25 Mar 2011 14:08:32 +0700

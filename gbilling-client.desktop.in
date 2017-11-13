@@ -1,0 +1,10 @@
+[Desktop Entry]
+Encoding=UTF-8
+Name=gBilling Client
+Comment=Client gBilling
+Exec=@prefix@/bin/gbilling-client
+Icon=gbilling
+StartupNotify=true
+Terminal=false
+Type=Application
+Categories=Application;Utility

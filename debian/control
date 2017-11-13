@@ -1,0 +1,22 @@
+Source: gbilling-client
+Section: admin
+Priority: optional
+Maintainer: Dindin Hernawan (Xenta OS) <root@dev.xentaos.org>
+Build-Depends: debhelper (>= 7.0.50~), 
+               autotools-dev, 
+               locales, 
+               libgl1-mesa-glx, 
+               libasound2, 
+               libglade2-dev, 
+               gawk
+Standards-Version: 3.9.7
+Homepage: https://github.com/xentaos/gbilling-client
+Vcs-Browser: https://github.com/xentaos/gbilling-client.git
+
+Package: gbilling-client
+Architecture: all
+Depends: ${shlibs:Depends}, ${misc:Depends}
+Description: Paket gBilling Client untuk Xenta OS.
+ gBilling adalah aplikasi sistem pembayaran warnet (warnet billing system)
+ yang terdiri dari server dan client, gBilling diharapkan bisa berjalan di
+ multi-platform (Linux, BSD, MacOS, atau Microsoft Windows).

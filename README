@@ -1,0 +1,243 @@
+gBilling Client 0.3.2
+
+Website : http://gbilling.sourceforge.net
+Forum   : http://gbilling.freeforums.org
+
+*****************************************************************
+* Untuk kemajuan aplikasi ini, harap laporkan bug dan hasil uji *
+* coba anda ke developer atau di forum gBilling.                *
+*                                                               *
+* Untuk melakukan donasi silahkan kunjungi website gBilling     *
+* untuk keterangan lebih lanjut.                                *
+*****************************************************************
+
+
+Tentang gBilling
+================
+
+    gBilling adalah aplikasi sistem pembayaran warnet (internet cafe 
+billing system) yang terdiri dari server dan client, gBilling diharapkan bisa 
+berjalan di multi-platform (Linux, BSD, MacOS, atau Microsoft Windows). 
+gBilling di tulis dalam bahasa C, dengan GUI toolkit GTK+ (The GIMP Toolkit), 
+dan menggunakan SQLite sebagai sistem database. gBilling akan selalu berada 
+di bawah lisensi GNU Public License (GPL) versi 2, silahkan baca lisensi ini 
+sebelum penggunaan, distribusi dan modifikasi gBilling. Dukung pengembangan 
+gBilling dengan ikut serta dalam penulisan kode program, menulis dokumentasi, 
+laporan bug atau melakukan donasi. Donasi yang masuk akan sangat membantu 
+pengembangan gBilling seperti untuk membeli distro-distro Linux, membeli sistem 
+operasi yang belum di uji coba, dan keperluan lainnya. Untuk melakukan donasi, 
+silahkan hubungi penulis.
+
+Perhatian: Anda tetap selalu bisa mendapatkan gBilling dengan bebas dan tanpa 
+melakukan donasi terlebih dahulu, jika ada pihak yang menjual atau meminta 
+donasi untuk mendapatkan gBilling, silahkan hubungi penulis.
+
+
+
+Sejarah Singkat
+===============
+
+    Penulis membuat aplikasi ini pertama kalinya ketika sedang menulis aplikasi 
+network untuk server FreeBSD (Maret, 2008) yang kira-kira hampir sama dengan 
+cara kerja aplikasi billing warnet, dan pada waktu proyek aplikasi network itu 
+selesai, penulis tertarik untuk menulis aplikasi billing warnet yang 
+sesungguhnya. Penulis memilih porting ke GNU/Linux (Linux) karena Linux adalah 
+sistem yang sangat ideal untuk Warnet. Walaupun dengan waktu luang yang tidak 
+banyak (suka nongkrong dan banyak dengar lagu ;p) gBilling pun mulai ditulis 
+dari awal. Karena socket programming pada setiap sistem kompatibel, dan 
+library-library yang dipakai bisa berjalan di semua sistem tersebut, gBilling 
+juga seharusnya bisa berjalan di setiap sistem dengan tanpa atau sedikit 
+modifikasi, ini seperti Winsock di Windows yang menggunakan fungsi-fungsi khusus 
+(tapi tetap menyediakan kompabilitas dengan socket UNIX/BSD) dan kode error 
+yang tidak seperti UNIX. Pertama kali gBilling ditulis dengan Python, seiring 
+perkembangan aplikasi ini seperti system call, API library-library yang 
+digunakan, bahasa scripting dianggap tidak cocok lagi dan gBilling ditulis 
+ulang ke C sampai saat ini dengan GLib untuk fungsi-fungsi wrapper POSIX dan 
+API Windows.
+
+    gBilling menggunakan model concurrent TCP/IP server model, artinya server 
+dapat malayani request client secara bersamaan (concurrent) tanpa menunggu request 
+dari client lainnya selesai. Concurrent ini dicapai dengan menggunakan thread 
+pada setiap request client seperti scheduling, timeout atau operasi socket (I/O). 
+gBilling telah diprogram dengan baik untuk memenuhi kondisi thread-safe, tapi 
+gBilling tidak dapat dijamin thread-safe, kerena untuk itu pemeriksaan program 
+harus dilakukan dengan debugging atau menggunakan aplikasi pendeteksi 
+thread-safety. Debugging pada aplikasi yang kompleks dan multi-thread sangat 
+tidak mudah, kita harus punya kesabaran, skill, dan banyak waktu (ya, kita 
+harus punya banyak waktu ;p). gBilling ditulis dalam bahasa C untuk kecepatan 
+dan portabilitas, tidak seperti bahasa high-level seperti Java, PHP atau Python 
+yang mengakses system call dan API melalui runtime-nya (yang juga merupakan 
+system-level programming). C akan mengajarkan kita bagaimana mengakses system 
+call dan API langsung dari library-library yang disediakan oleh sistem.
+
+
+Mengapa gBilling?
+=================
+
+    Karena gBilling adalah software bebas (free software), anda dapat mengambil 
+keuntungan dari aplikasi ini. Anda bisa memodifikasi sesuai keperluan anda, 
+anda bisa mempelajari cara kerja gBilling dan membuat aplikasi billing anda 
+sendiri, anda bisa berpartisipasi mengembangkan program ini, dan lain-lain. 
+gBilling akan selalu ditulis dengan mangacu pada portabilitas, gBilling tidak 
+akan mengacu hanya pada satu sistem yang mana akan membuang-buang waktu saja.
+
+gBilling tidak dibuat untuk mendapat keuntungan atau penghargaan, gBilling 
+dibuat untuk mendukung sistem operasi yang bebas seperti Linux agar bisa 
+digunakan dengan baik untuk warnet. Sekali lagi gBilling adalah software bebas 
+yang berada di bawah lisensi GNU General Public License versi 2, gBilling bukan 
+Open Source!, tapi free software.
+
+
+Fitur-fitur gBilling
+====================
+
+* Multiplatform (UNIX: Linux, MacOS, BSD, dan Microsoft Windows) untuk 
+  arsitektur 32 bit dan 64 bit
+* Concurrent TCP/IP server model (IPv4)
+* Multithread (per-client thread)
+* Orientasi penyimpanan database (Embedded SQLite)
+* Sinkronisasi waktu client menggunakan waktu server
+* Kontrol penuh dari server (logout, shutdown, restart)
+* Sistem logging dan export log ke format CSV
+* Recovery (recovery data server/client untuk power loss, system crash)
+* Autentikasi user
+* Chatting
+* Sistem paket
+* Sistem Item (Item-item yang dijual di warnet ditampilkan di client)
+* Kostumisasi sesuai dengan warnet anda (nama warnet, slogan, alamat)
+* Notifikasi event dengan suara (login, logout, chat, etc.)
+* Rotasi tarif sesuai waktu yang ditentukan
+* Free software
+
+
+Instalasi
+=========
+
+Kompilasi dan instalasi di Linux
+
+Untuk kompilasi gBilling di Linux, anda membutuhkan library-library berikut:
+
+* GTK+ >= 2.18.9
+* GLib >= 2.22.5
+* GStreamer >= 0.10.29 (hanya untuk gBilling Server versi 0.3 ke atas)
+* SQLite >= 3.41 (hanya untuk gBilling Server versi 0.1 ke bawah)
+* libglade >= 2.6.0 (hanya untuk versi 0.1 ke bawah)
+
+Pastikan library-library tersebut telah terpasang dan dikonfigurasi dengan benar 
+di sistem anda, gBilling telah dipaket dengan script standar instalasi 
+GNU (autoconf, automake, libtool). Kompilasi dan instalasi gBilling sama dengan 
+paket standar GNU lainnya.
+
+Jika di sistem telah terpasang versi gBilling Server atau gBilling Client yang
+lebih lama, direkomendasikan untuk menghapus file-file pengaturan mereka terlebih
+dahulu untuk mencegah konflik dengan pengaturan-pengaturan pada versi yang baru.
+(Sebelumya lakukan backup untuk file-file pengaturan yang lama tersebut),
+pertama-tama login dengan user untuk menjalankan server atau client terlebih
+dahulu, lalu lakukan:
+
+Untuk gBilling Server
+
+  $ rm -rf ~/.gbilling/server.conf
+
+Untuk gBilling Client
+
+  $ rm -rf ~/.gbilling/client.conf
+
+Download versi terbaru dari gBilling Server dan gBilling Client, kompilasi dan 
+instalasi sebagai berikut:
+
+  $ tar xzf gbilling-server-x.y.tar.gz
+  $ cd gbilling-server-x.y
+  $ ./configure
+  $ make
+  $ su -c 'make install'
+
+Anda juga dapat menentukan lokasi instalasi dengan konfigurasi:
+
+  $ ./configure --prefix=/opt/gbilling-server
+
+Ini akan menginstall di direktori /opt/gbilling-server
+
+Untuk menghapus file-file hasil kompilasi:
+
+  $ make clean
+  $ make distclean
+
+Untuk uninstall lakukan:
+
+  $ su -c 'make uninstall'
+
+Untuk informasi lanjut, silahkan lihat file INSTALL pada paket gBilling Server 
+atau gBilling Client.
+
+Setelah instalasi jalankan gBilling Server atau gBilling Client dari menu atau 
+langsung dari shell, lakukan pengaturan untuk server seperti mengatur username 
+dan password server, client, dan log.
+
+********************************************************************************
+Catatan: Username dan password standar gBilling Server adalah sebagai berikut.
+
+
+Versi 0.2.1 dan ke atas:
+Username dan password default adalah admin:gbilling
+
+Versi 0.1 dan kebawah
+Username dan password default adalah we:rock
+********************************************************************************
+
+Penting: Karena dokumentasi pemakaian gBilling belum tersedia (dalam pembuatan), 
+anda harus mengatur gBilling Server dan gBilling Client menurut pengetahuan anda. 
+Pengaturan ini relatif mudah jika pemakai mempunyai pengetahuan dasar tentang 
+jaringan komputer.
+
+
+Kompilasi dan instalasi di Windows
+==================================
+
+    Catatan: gBilling belum pernah dicoba untuk Windows 95, 98, atau ME. Tidak 
+bisa dipastikan jika gBilling akan berjalan pada versi-versi tersebut, walaupun 
+mereka memakai Winsock versi 2.2 (kecuali Windows 95 yang memakai Winsock 1.1, 
+update Winsock 2 untuk Windows 95 ada di website support Microsoft). Microsoft 
+telah memberhentikan support pada versi-versi tersebut, dan library-library yang 
+dipakai mungkin sudah tidak mendukungnya lagi. gBilling telah berjalan dengan 
+baik di Windows 2000/XP. gBilling juga belum pernah dicoba di Windows Vista 
+(karena penulis tidak mempunyai sistem ini), tapi harusnya gBilling bisa 
+berjalan dengan baik di Windows Vista dan 7.
+
+Kompilasi gBilling di Windows baru dicoba dengan compiler C GCC, 
+compiler-compiler seperti Microsoft Visual C atau Borland C Compiler mungkin 
+akan dicoba pada versi selanjutnya. Untuk kompilasi di Windows anda memerlukan:
+
+* GCC C Compiler untuk Windows, seperti Cygwin atau Mingw dengan Windows API 
+ (Win32 API), anda bisa mencoba IDE yang telah memaketkan Mingw dan Windows API 
+ seperti Dev C++ atau Code::Blocks.
+
+* Library-library pendukung (GTK, GLib, SQLite, dan libglade) untuk Windows 
+ (versi yang telah disebutkan di atas), anda bisa mendapatkan library-library 
+ ini di website masing-masing proyek tersebut. Kunjungi juga GTK Development 
+ Environment (di tulis oleh Ivan Wong, btw site-nya ada yang hack!) untuk 
+ library-library GTK, GLib, dan libglade yang semuanya telah dipaket 
+ untuk Windows.
+
+Untuk persiapan kompilasi anda perlu membuat file Makefile untuk Windows, set 
+compiler flag, set library-library yang digunakan, dan menambah file-file 
+yang akan dikompilasi, setelah itu lakukan kompilasi dengan:
+
+  c:\mingw\bin\make Makefile.win
+
+Jika anda mempunyai file Resource Source (.rc, .res) untuk setting gBilling, 
+lakukan dengan menambah entri pada Makefile:
+
+  ...
+  WINDRES = windres.exe
+  ...
+  gbilling_private.res: gbilling_private.rc
+  $(WINDRES) -i gbilling_private.rc --input-format=rc -o gbilling_private.res -O coff
+  ...
+
+
+Kompilasi dan instalasi di sistem lainnya
+=========================================
+
+    Kompilasi dan instalasi pada sistem UNIX lainnya: BSD atau MacOS akan di tulis 
+pada update halaman ini selanjutnya.
