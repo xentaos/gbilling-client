@@ -1,6 +1,7 @@
-# Berkas Paket
+# Berkas Build Paket debian/*
 build-stamp
 configure-stamp
+debian/.debhelper
 debian/*.log
 debian/*.substvars
 debian/files
@@ -8,4 +9,11 @@ debian/debhelper-build-stamp
 
 # Directory Paket
 debian/gbilling-client
+config.h
+config.log
+config.status
+gbilling-client.desktop
+libtool
+MakeFile
+stamp-h1
 
