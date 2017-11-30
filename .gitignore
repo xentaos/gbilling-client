@@ -1,0 +1,11 @@
+# Berkas Paket
+build-stamp
+configure-stamp
+debian/*.log
+debian/*.substvars
+debian/files
+debian/debhelper-build-stamp
+
+# Directory Paket
+debian/gbilling-client
+
